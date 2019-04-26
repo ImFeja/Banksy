@@ -22,7 +22,20 @@ public class Customer {
         this.address = address;
         this.balance = balance;
         this.credit = credit;
-}
+
+    }
+    
+    public String getName(){
+        return this.name;
+    }
+    
+    public String getAddress(){
+        return this.address;
+    }
+    
+    public double getBal(){
+       return this.balance;
+    }
            
     
 }
