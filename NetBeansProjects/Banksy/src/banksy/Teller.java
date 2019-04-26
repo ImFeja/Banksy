@@ -11,4 +11,11 @@ package banksy;
  */
 public class Teller {
     
+    public void teller(){
+        
+    }
+    
+    
+    
+    
 }
