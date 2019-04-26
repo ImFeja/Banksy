@@ -15,6 +15,8 @@ public class Customer {
     private String address;
     private double balance;
     private double credit;
+    private int accountNum;
+    
     
     
     public Customer(String name, String address, double balance, double credit){
@@ -35,6 +37,10 @@ public class Customer {
     
     public double getBal(){
        return this.balance;
+    }
+    
+    public int getAccNum(){
+        return this.accountNum;
     }
     
     //Use when making purchase, are you over your credit limit? If it will go over it will return true, so use if = true then block it.
