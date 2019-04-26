@@ -11,4 +11,18 @@ package banksy;
  */
 public class Customer {
     
+    private String name;
+    private String address;
+    private double balance;
+    private int credit;
+    
+    
+    public Customer(String name, String address, double balance, int credit){
+        this.name = name;
+        this.address = address;
+        this.balance = balance;
+        this.credit = credit;
+}
+           
+    
 }
