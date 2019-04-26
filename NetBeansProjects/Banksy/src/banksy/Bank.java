@@ -24,6 +24,12 @@ public class Bank {
 
     }
     
+    public Customer addCustomer(int accountNum, String name, String address, double bal, double credit, int pin, boolean type){
+        Customer aCustomer = new Customer(accountNum, name, address, bal, credit, pin, type);
+        this.Customer.add(aCustomer);
+        return aCustomer;
+    }
+        
 
     public void checkBal(int n, String filename) {
         try {
