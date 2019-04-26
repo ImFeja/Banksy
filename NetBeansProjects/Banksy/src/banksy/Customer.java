@@ -16,10 +16,12 @@ public class Customer {
     private double balance;
     private double credit;
     private int accountNum;
+    private boolean type;
     
     
     
-    public Customer(String name, String address, double balance, double credit){
+    
+    public Customer(int accountNum, String name, String address, double balance, double credit, int pin, boolean type){
         this.name = name;
         this.address = address;
         this.balance = balance;
