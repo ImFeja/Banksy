@@ -16,20 +16,27 @@ public class Bank {
 
     private List<Customer> Customer = new ArrayList<>();
 
-    public Bank() {
-
+    public Bank(String customerList) {
+        loadCustomer(customerList);
     }
 
-    public Bank(String Customer) {
-
+    public void addBal(double addBal, int accNum) {
+        Scanner input = new Scanner(System.in);
+        double current = this.Customer.get(accNum).getBal();
+        Customer.get(accNum).balance = current + addBal;
     }
-    
-    public Customer addCustomer(int accountNum, String name, String address, double bal, double credit, int pin, boolean type){
+
+    public void subBal(double subBal, int accNum) {
+        Scanner input = new Scanner(System.in);
+        double current = this.Customer.get(accNum).getBal();
+        Customer.get(accNum).balance = current - subBal;
+    }
+
+    public Customer addCustomer(int accountNum, String name, String address, double bal, double credit, int pin, boolean type) {
         Customer aCustomer = new Customer(accountNum, name, address, bal, credit, pin, type);
         this.Customer.add(aCustomer);
         return aCustomer;
     }
-        
 
     public void checkBal(int n, String filename) {
         try {
@@ -44,7 +51,20 @@ public class Bank {
         }
     }
 
-    public void findCustomer(String filename) {
+    public Customer findCustomer(int accNum) {
+        for (Customer c : this.Customer) {
+            if (c.getAccNum() == accNum) {
+                //found customer
+                return c;
+            }
+        }
+        //no customer found
+        return null;
+    }
+    
+    
+
+    public void loadCustomer(String filename) {
         try {
 
             Scanner input = new Scanner(new File(filename));
@@ -66,6 +86,24 @@ public class Bank {
 
                 }
             }
+        } catch (Exception e) {
+            System.err.println("Oopsiewoopsie, sumtin went wong: " + e);
+        }
+    }
+
+    public void saveCustomers(String filename) {
+        try {
+            PrintWriter output = new PrintWriter(new File(filename));
+            for (Customer c : this.Customer) {
+                output.println(c.getAccNum());
+                output.println(c.getName());
+                output.println(c.getAddress());
+                //output.println(c.getPin());
+                output.println(c.getBal());
+                output.println(c.getType());
+                output.close();
+            }
+
         } catch (Exception e) {
             System.err.println("Oopsiewoopsie, sumtin went wong: " + e);
         }
