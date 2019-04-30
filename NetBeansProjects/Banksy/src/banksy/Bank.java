@@ -61,8 +61,6 @@ public class Bank {
         //no customer found
         return null;
     }
-    
-    
 
     public void loadCustomer(String filename) {
         try {
@@ -98,7 +96,7 @@ public class Bank {
                 output.println(c.getAccNum());
                 output.println(c.getName());
                 output.println(c.getAddress());
-                //output.println(c.getPin());
+                output.println(c.getPin());
                 output.println(c.getBal());
                 output.println(c.getType());
                 output.close();
