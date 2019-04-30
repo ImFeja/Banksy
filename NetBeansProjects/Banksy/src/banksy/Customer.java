@@ -5,58 +5,72 @@
  */
 package banksy;
 
+import java.util.Scanner;
+
 /**
  *
  * @author OGfej
  */
 public class Customer {
-    
+
     private String name;
     private String address;
-    private double balance;
+    public double balance;
     private double credit;
     private int accountNum;
-    private boolean type;
-    
-    
-    
-    
-    public Customer(int accountNum, String name, String address, double balance, double credit, int pin, boolean type){
+    private boolean type; //true = credit, flse equals checking
+
+    public Customer(int accountNum, String name, String address, double balance, double credit, int pin, boolean type) {
         this.name = name;
         this.address = address;
         this.balance = balance;
         this.credit = credit;
 
     }
-    
-    public String getName(){
+
+    public void addBal(double addBal, int accNum) {
+        Scanner input = new Scanner(System.in);
+        double current = this.getBal();
+        balance = current + addBal;
+    }
+
+    public void subBal(double subBal, int accNum) {
+        Scanner input = new Scanner(System.in);
+        double current = this.getBal();
+        balance = current - subBal;
+    }
+
+    public String getName() {
         return this.name;
     }
-    
-    public String getAddress(){
+
+    public String getAddress() {
         return this.address;
     }
-    
-    public double getBal(){
-       return this.balance;
+
+    public double getBal() {
+        return this.balance;
     }
-    
-    public int getAccNum(){
+
+    public int getAccNum() {
         return this.accountNum;
     }
     
-    //Use when making purchase, are you over your credit limit? If it will go over it will return true, so use if = true then block it.
-    public boolean overCredit(double b, double n){
-        b = this.balance;
-        
-        if(b - n < this.credit){
-            return true;
-        }else{
-            return false;
-        }
-        
+    public boolean getType(){
+        return this.type;
         
     }
-           
-    
+
+    //Use when making purchase, are you over your credit limit? If it will go over it will return true, so use if = true then block it.
+    public boolean overCredit(double b, double n) {
+        b = this.balance;
+
+        if (b - n < this.credit) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
 }
