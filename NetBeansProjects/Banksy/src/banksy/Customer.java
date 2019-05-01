@@ -17,6 +17,7 @@ public class Customer {
     private String address;
     public double balance;
     private double credit;
+    private int pin;
     private int accountNum;
     private boolean type; //true = credit, flse equals checking
 
@@ -47,6 +48,11 @@ public class Customer {
     public String getAddress() {
         return this.address;
     }
+    
+    public int getPin(){
+        return this.pin;
+    }
+       
 
     public double getBal() {
         return this.balance;
