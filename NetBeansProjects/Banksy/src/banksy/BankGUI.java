@@ -19,6 +19,7 @@ public class BankGUI extends javax.swing.JFrame {
      */
     public BankGUI() {
         initComponents();
+        Bank bank = new Bank("customer.txt");
     }
 
     /**
@@ -36,11 +37,10 @@ public class BankGUI extends javax.swing.JFrame {
         password = new javax.swing.JTextField();
         loginButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        loginPage = new javax.swing.JTextPane();
         signButton = new javax.swing.JButton();
         userLab = new javax.swing.JLabel();
         passLab = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -90,8 +90,6 @@ public class BankGUI extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(193, 193, 38));
         jLabel1.setText("Scumbags BCR ltd.");
 
-        jScrollPane1.setViewportView(loginPage);
-
         signButton.setText("SIGN UP");
         signButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -104,7 +102,6 @@ public class BankGUI extends javax.swing.JFrame {
 
         passLab.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
         passLab.setForeground(new java.awt.Color(204, 0, 0));
-        passLab.setText("Password Is Invalid");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -114,24 +111,23 @@ public class BankGUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(145, 145, 145)
-                        .addComponent(jLabel1))
+                        .addComponent(jLabel1)
+                        .addGap(0, 0, 0)
+                        .addComponent(jLabel5))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(userLab, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(passLab, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(passLab, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(79, 79, 79)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(username)
                             .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(signButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 472, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(120, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -149,8 +145,8 @@ public class BankGUI extends javax.swing.JFrame {
                     .addComponent(signButton)
                     .addComponent(passLab, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jLabel5)
+                .addContainerGap(102, Short.MAX_VALUE))
         );
 
         pack();
@@ -170,7 +166,8 @@ public class BankGUI extends javax.swing.JFrame {
 
     private void signButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signButtonActionPerformed
         
-        
+        signUpGUI obj = new signUpGUI();
+        obj.setVisible(true);
         
     }//GEN-LAST:event_signButtonActionPerformed
 
@@ -181,12 +178,14 @@ public class BankGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_passwordActionPerformed
 
     private void usernameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usernameKeyReleased
-        String PATTERN = "^(a-zA-Z)(0,30)$";
-        Pattern patt = Pattern.compile(PATTERN);
-        Matcher match = patt.matcher(username.getText());
-        if(!match.matches()){
-            //userLab.setText
-        }
+//        String PATTERN = "^(a-z)(1,30)";
+//        Pattern patt = Pattern.compile(PATTERN);
+//        Matcher match = patt.matcher(username.getText());
+//        if(!match.matches()){
+//            userLab.setText("Name is invalid");
+//        } else {
+//            userLab.setText(null);
+//        }
     }//GEN-LAST:event_usernameKeyReleased
 
     /**
@@ -227,11 +226,10 @@ public class BankGUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     private javax.swing.JButton loginButton;
-    private javax.swing.JTextPane loginPage;
     private javax.swing.JLabel passLab;
     private javax.swing.JTextField password;
     private javax.swing.JButton signButton;
