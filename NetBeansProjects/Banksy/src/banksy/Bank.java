@@ -73,13 +73,14 @@ public class Bank {
                     input.nextLine();
                     String name = input.nextLine();
                     String address = input.nextLine();
-                    int pin = input.nextInt();
-                    input.nextLine();
                     int bal = input.nextInt();
                     input.nextLine();
-                    boolean type = input.nextBoolean();
-                    int lim = input.nextInt();
+                    int pin = input.nextInt();
                     input.nextLine();
+                    double lim = input.nextDouble();
+                    input.nextLine();
+                    boolean type = input.nextBoolean();
+                    
                     //if over credit limit track them down
 
                 }
@@ -96,8 +97,9 @@ public class Bank {
                 output.println(c.getAccNum());
                 output.println(c.getName());
                 output.println(c.getAddress());
-                output.println(c.getPin());
                 output.println(c.getBal());
+                output.println(c.getPin());
+                output.println(c.getCredit());
                 output.println(c.getType());
                 output.close();
             }
