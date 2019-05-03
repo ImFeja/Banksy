@@ -19,7 +19,7 @@ public class BankGUI extends javax.swing.JFrame {
      */
     public BankGUI() {
         initComponents();
-        Bank bank = new Bank("customer.txt");
+        
     }
 
     /**
@@ -154,7 +154,7 @@ public class BankGUI extends javax.swing.JFrame {
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         
-        
+        //Customer c = findCustomer(userLab.getText());
         
     }//GEN-LAST:event_loginButtonActionPerformed
 
