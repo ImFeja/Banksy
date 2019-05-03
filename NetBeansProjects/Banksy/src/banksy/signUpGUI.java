@@ -134,9 +134,10 @@ public class signUpGUI extends javax.swing.JFrame {
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
         Bank bank = new Bank("customer.txt");
-        for (int i = 0; i < 1000; i++){ 
-        bank.addCustomer(i, signUpName.getText(), signUpAddress.getText(), );
-                }
+        for (int i = 0; i < 1000; i++) {
+            bank.addCustomer(i, signUpName.getText(), signUpAddress.getText(), 5000, 0, 001, false);
+        }
+        bank.saveCustomers("customer.txt");
     }//GEN-LAST:event_okButtonActionPerformed
 
     private void signUpNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signUpNameActionPerformed
