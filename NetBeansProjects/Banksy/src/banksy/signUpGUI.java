@@ -11,13 +11,16 @@ package banksy;
  */
 public class signUpGUI extends javax.swing.JFrame {
 
+    
+    Bank bank;
     /**
      * Creates new form signUpGUI
      */
     public signUpGUI() {
         initComponents();
+        bank = new Bank("customer.txt");
     }
-
+   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -73,6 +76,11 @@ public class signUpGUI extends javax.swing.JFrame {
         });
 
         savings.setText("Savings");
+        savings.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                savingsActionPerformed(evt);
+            }
+        });
 
         signUpNameLab.setText("Name");
 
@@ -133,11 +141,12 @@ public class signUpGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
-        Bank bank = new Bank("customer.txt");
-        for (int i = 1; i < 1000; i++) {
-            bank.addCustomer(i, signUpName.getText(), signUpAddress.getText(), 5000, 0, 001, false);
-        }
+       
+        bank.addCustomer(signUpName.getText(), signUpAddress.getText(), 0, 0, false);
         bank.saveCustomers("customer.txt");
+        BankGUI obj = new BankGUI();
+        obj.setVisible(true);
+        
     }//GEN-LAST:event_okButtonActionPerformed
 
     private void signUpNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signUpNameActionPerformed
@@ -149,9 +158,14 @@ public class signUpGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_signUpAddressActionPerformed
 
     private void chequeingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chequeingActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_chequeingActionPerformed
 
+    private void savingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savingsActionPerformed
+        
+    }//GEN-LAST:event_savingsActionPerformed
+
+    
     /**
      * @param args the command line arguments
      */
