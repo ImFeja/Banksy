@@ -15,6 +15,8 @@ import java.util.Scanner;
 public class Bank {
 
     private List<Customer> Customer = new ArrayList<>();
+    private static int accNumber = 1;
+    private static int pinNum = 1000;
 
     public Bank(String customerList) {
         loadCustomer(customerList);
@@ -32,8 +34,10 @@ public class Bank {
         Customer.get(accNum).balance = current - subBal;
     }
 
-    public Customer addCustomer(int accountNum, String name, String address, double bal, double credit, int pin, boolean type) {
-        Customer aCustomer = new Customer(accountNum, name, address, bal, credit, pin, type);
+    public Customer addCustomer(String name, String address, double bal, double credit, boolean type) {
+        Customer aCustomer = new Customer(accNumber, name, address, bal, credit, pinNum, type);
+        accNumber++;
+        pinNum++;
         this.Customer.add(aCustomer);
         return aCustomer;
     }
@@ -47,7 +51,7 @@ public class Bank {
 
             }
         } catch (Exception e) {
-            System.err.println("Oopsiewoopsie, sumtin went wong: " + e);
+            System.err.println("Oopsiewoopsie, sumtin went wong *RAWR XD*: " + e);
         }
     }
 
@@ -67,26 +71,26 @@ public class Bank {
 
             Scanner input = new Scanner(new File(filename));
             while (input.hasNext()) {
-                for (Customer m : this.Customer) {
-                    //adds everything that will be listed
-                    int accNum = input.nextInt();
-                    input.nextLine();
-                    String name = input.nextLine();
-                    String address = input.nextLine();
-                    int bal = input.nextInt();
-                    input.nextLine();
-                    int pin = input.nextInt();
-                    input.nextLine();
-                    double lim = input.nextDouble();
-                    input.nextLine();
-                    boolean type = input.nextBoolean();
-                    
-                    //if over credit limit track them down
 
-                }
+                //adds everything that will be listed
+                accNumber = input.nextInt();
+                input.nextLine();
+                String name = input.nextLine();
+                String address = input.nextLine();
+                double bal = input.nextDouble();
+                input.nextLine();
+                pinNum = input.nextInt();
+                input.nextLine();
+                double lim = input.nextDouble();
+                input.nextLine();
+                boolean type = input.nextBoolean();
+                input.nextLine();
+                Customer c = addCustomer(name, address, bal, lim, type);
+                //if over credit limit track them down
+
             }
         } catch (Exception e) {
-            System.err.println("Oopsiewoopsie, sumtin went wong: " + e);
+            System.err.println("Oopsiewoopsie, sumtin went wong *UWU*: " + e);
         }
     }
 
@@ -101,11 +105,11 @@ public class Bank {
                 output.println(c.getPin());
                 output.println(c.getCredit());
                 output.println(c.getType());
-                output.close();
-            }
 
+            }
+            output.close();
         } catch (Exception e) {
-            System.err.println("Oopsiewoopsie, sumtin went wong: " + e);
+            System.err.println("Oopsiewoopsie, sumtin went wong *OWO*: " + e);
         }
     }
 
