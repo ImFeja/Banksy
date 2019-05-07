@@ -72,7 +72,7 @@ public class Customer {
         
     }
     
-
+  
 
     //Use when making purchase, are you over your credit limit? If it will go over it will return true, so use if = true then block it.
     public boolean overCredit(double b, double n) {
