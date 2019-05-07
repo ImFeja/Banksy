@@ -17,11 +17,11 @@ public class Customer {
     private String address;
     public double balance;
     private double credit;
-    private int pin;
+    private String pin;
     private int accountNum;
-    private boolean type; //true = credit, flse equals checking
+    private boolean type; //true = credit, false equals checking
 
-    public Customer(int accountNum, String name, String address, double balance, double credit, int pin, boolean type) {
+    public Customer(int accountNum, String name, String address, double balance, double credit, String pin, boolean type) {
         this.name = name;
         this.address = address;
         this.balance = balance;
@@ -49,14 +49,19 @@ public class Customer {
         return this.address;
     }
     
-    public int getPin(){
+    public String getPin(){
         return this.pin;
+    }
+    
+    public double getCredit(){
+        return this.credit;
     }
        
 
     public double getBal() {
         return this.balance;
     }
+    
 
     public int getAccNum() {
         return this.accountNum;
@@ -66,6 +71,8 @@ public class Customer {
         return this.type;
         
     }
+    
+
 
     //Use when making purchase, are you over your credit limit? If it will go over it will return true, so use if = true then block it.
     public boolean overCredit(double b, double n) {

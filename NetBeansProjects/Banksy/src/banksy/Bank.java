@@ -32,7 +32,7 @@ public class Bank {
         Customer.get(accNum).balance = current - subBal;
     }
 
-    public Customer addCustomer(int accountNum, String name, String address, double bal, double credit, int pin, boolean type) {
+    public Customer addCustomer(int accountNum, String name, String address, double bal, double credit, String pin, boolean type) {
         Customer aCustomer = new Customer(accountNum, name, address, bal, credit, pin, type);
         this.Customer.add(aCustomer);
         return aCustomer;
@@ -51,9 +51,9 @@ public class Bank {
         }
     }
 
-    public Customer findCustomer(int accNum) {
+    public Customer findCustomer(String name) {
         for (Customer c : this.Customer) {
-            if (c.getAccNum() == accNum) {
+            if (c.getName() == name) {
                 //found customer
                 return c;
             }
@@ -61,12 +61,22 @@ public class Bank {
         //no customer found
         return null;
     }
+    
+    public Customer loginCustomer(String name, String pin){
+          for (Customer c : this.Customer) {
+            if (c.getName() == name && c.getPin() == pin) {
+                //found customer
+                return c;
+            }
+        }
+        //Couldn't log in
+        return null;
+    }
 
     public void loadCustomer(String filename) {
         try {
 
             Scanner input = new Scanner(new File(filename));
-            while (input.hasNext()) {
                 for (Customer m : this.Customer) {
                     //adds everything that will be listed
                     int accNum = input.nextInt();
@@ -81,8 +91,10 @@ public class Bank {
                     int lim = input.nextInt();
                     input.nextLine();
                     //if over credit limit track them down
-
-                }
+                    if(m.overCredit(m.getBal(), m.getCredit())){
+                        
+                    }
+                
             }
         } catch (Exception e) {
             System.err.println("Oopsiewoopsie, sumtin went wong: " + e);

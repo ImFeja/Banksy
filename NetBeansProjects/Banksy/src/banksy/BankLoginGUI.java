@@ -12,14 +12,16 @@ import java.util.regex.Pattern;
  *
  * @author watsa9604
  */
-public class BankGUI extends javax.swing.JFrame {
+public class BankLoginGUI extends javax.swing.JFrame {
 
+    Bank bank = new Bank("customer.txt");
+    
     /**
      * Creates new form BankGUI
      */
-    public BankGUI() {
+    public BankLoginGUI() {
         initComponents();
-        Bank bank = new Bank("customer.txt");
+        
     }
 
     /**
@@ -153,6 +155,7 @@ public class BankGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
+        Customer m = bank.loginCustomer(username.getText(), password.getText());
         
         
         
@@ -205,20 +208,21 @@ public class BankGUI extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(BankGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BankLoginGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(BankGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BankLoginGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(BankGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BankLoginGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(BankGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BankLoginGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new BankGUI().setVisible(true);
+                new BankLoginGUI().setVisible(true);
             }
         });
 

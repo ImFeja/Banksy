@@ -36,6 +36,8 @@ public class signUpGUI extends javax.swing.JFrame {
         savings = new javax.swing.JRadioButton();
         signUpNameLab = new javax.swing.JLabel();
         addressLab = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        signUpPass = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -52,7 +54,7 @@ public class signUpGUI extends javax.swing.JFrame {
             }
         });
 
-        okButton.setText("OK");
+        okButton.setText("Sign Up");
         okButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 okButtonActionPerformed(evt);
@@ -78,6 +80,14 @@ public class signUpGUI extends javax.swing.JFrame {
 
         addressLab.setText("Address");
 
+        jLabel1.setText("Pin");
+
+        signUpPass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                signUpPassActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -87,21 +97,23 @@ public class signUpGUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel2)
-                        .addGap(30, 30, 30))
+                        .addGap(152, 152, 152))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(addressLab)
                             .addComponent(signUpNameLab)
-                            .addComponent(typeLab))
+                            .addComponent(typeLab)
+                            .addComponent(jLabel1))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(signUpName, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(signUpAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(signUpName, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
+                            .addComponent(signUpAddress, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(chequeing)
                                 .addGap(18, 18, 18)
-                                .addComponent(savings)))))
-                .addContainerGap(122, Short.MAX_VALUE))
+                                .addComponent(savings))
+                            .addComponent(signUpPass))
+                        .addContainerGap(122, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(okButton, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -119,14 +131,18 @@ public class signUpGUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addressLab)
                     .addComponent(signUpAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
+                .addGap(8, 8, 8)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(signUpPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(typeLab)
                     .addComponent(chequeing)
                     .addComponent(savings))
                 .addGap(18, 18, 18)
                 .addComponent(okButton)
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         pack();
@@ -134,9 +150,9 @@ public class signUpGUI extends javax.swing.JFrame {
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
         Bank bank = new Bank("customer.txt");
-        for (int i = 0; i < 1000; i++){ 
-        bank.addCustomer(i, signUpName.getText(), signUpAddress.getText(), );
-                }
+        for (int i = 0; i < 1000; i++){ // <-- Why did you think this would work you Poo Poo Head
+        bank.addCustomer(i, signUpName.getText(), signUpAddress.getText(), 0.0, -10000,  signUpPass.getText(), true);
+        }   
     }//GEN-LAST:event_okButtonActionPerformed
 
     private void signUpNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signUpNameActionPerformed
@@ -150,6 +166,10 @@ public class signUpGUI extends javax.swing.JFrame {
     private void chequeingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chequeingActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_chequeingActionPerformed
+
+    private void signUpPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signUpPassActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_signUpPassActionPerformed
 
     /**
      * @param args the command line arguments
@@ -179,22 +199,22 @@ public class signUpGUI extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new signUpGUI().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new signUpGUI().setVisible(true);
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel addressLab;
     private javax.swing.JRadioButton chequeing;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JButton okButton;
     private javax.swing.JRadioButton savings;
     private javax.swing.JTextField signUpAddress;
     private javax.swing.JTextField signUpName;
     private javax.swing.JLabel signUpNameLab;
+    private javax.swing.JTextField signUpPass;
     private javax.swing.JLabel typeLab;
     // End of variables declaration//GEN-END:variables
 }
