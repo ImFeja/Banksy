@@ -84,12 +84,13 @@ public class Bank {
                     input.nextLine();
                     String name = input.nextLine();
                     String address = input.nextLine();
-                    int pin = input.nextInt();
-                    input.nextLine();
                     int bal = input.nextInt();
                     input.nextLine();
-                    boolean type = input.nextBoolean();
                     int lim = input.nextInt();
+                    input.nextLine();
+                    String pin = input.nextLine();
+                    input.nextLine();
+                    boolean type = input.nextBoolean();
                     input.nextLine();
                     //if over credit limit track them down
                     if(m.overCredit(m.getBal(), m.getCredit())){
@@ -109,11 +110,12 @@ public class Bank {
                 output.println(c.getAccNum());
                 output.println(c.getName());
                 output.println(c.getAddress());
-                output.println(c.getPin());
                 output.println(c.getBal());
+                output.println(c.getCredit());
+                output.println(c.getPin());
                 output.println(c.getType());
-                output.close();
             }
+            output.close();
 
         } catch (Exception e) {
             System.err.println("Oopsiewoopsie, sumtin went wong: " + e);
