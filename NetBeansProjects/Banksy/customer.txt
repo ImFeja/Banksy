@@ -1,0 +1,7 @@
+0
+rrreeee
+aaaa
+0.0
+-10000.0
+2233
+false

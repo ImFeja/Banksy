@@ -78,24 +78,22 @@ public class Bank {
         try {
 
             Scanner input = new Scanner(new File(filename));
-                for (Customer m : this.Customer) {
+                
+            while(input.hasNext()){
                     //adds everything that will be listed
                     int accNum = input.nextInt();
-                    input.nextLine();
-                    String name = input.nextLine();
-                    String address = input.nextLine();
+                    String name = input.next();
+                    String address = input.next();
                     int bal = input.nextInt();
-                    input.nextLine();
-                    int lim = input.nextInt();
-                    input.nextLine();
-                    String pin = input.nextLine();
-                    input.nextLine();
+                    double credit = input.nextInt();
+                    String pin = input.next();
                     boolean type = input.nextBoolean();
-                    input.nextLine();
+                    
+                    Customer customer = addCustomer(name, address, bal, credit, pin, type);
                     //if over credit limit track them down
-                    if(m.overCredit(m.getBal(), m.getCredit())){
+                   // if(m.overCredit(m.getBal(), m.getCredit())){
                         
-                    }
+                    //}
                 
             }
         } catch (Exception e) {

@@ -26,6 +26,7 @@ public class Customer {
         this.address = address;
         this.balance = balance;
         this.credit = credit;
+        this.pin = pin;
 
     }
 
