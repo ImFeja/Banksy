@@ -15,6 +15,7 @@ import java.util.Scanner;
 public class Bank {
 
     private List<Customer> Customer = new ArrayList<>();
+    private static int accNumber;
 
     public Bank(String customerList) {
         loadCustomer(customerList);
@@ -32,8 +33,8 @@ public class Bank {
         Customer.get(accNum).balance = current - subBal;
     }
 
-    public Customer addCustomer(int accountNum, String name, String address, double bal, double credit, String pin, boolean type) {
-        Customer aCustomer = new Customer(accountNum, name, address, bal, credit, pin, type);
+    public Customer addCustomer(String name, String address, double bal, double credit, String pin, boolean type) {
+        Customer aCustomer = new Customer(accNumber, name, address, bal, credit, pin, type);
         this.Customer.add(aCustomer);
         return aCustomer;
     }
