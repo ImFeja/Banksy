@@ -35,6 +35,7 @@ public class Bank {
 
     public Customer addCustomer(String name, String address, double bal, double credit, String pin, boolean type) {
         Customer aCustomer = new Customer(accNumber, name, address, bal, credit, pin, type);
+        accNumber++;
         this.Customer.add(aCustomer);
         return aCustomer;
     }
@@ -91,6 +92,7 @@ public class Bank {
                     String pin = input.nextLine();
                     input.nextLine();
                     boolean type = input.nextBoolean();
+                    input.nextLine();
                     input.nextLine();
                     //if over credit limit track them down
                     if(m.overCredit(m.getBal(), m.getCredit())){
