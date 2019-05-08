@@ -150,7 +150,7 @@ public class signUpGUI extends javax.swing.JFrame {
                     .addComponent(savings))
                 .addGap(18, 18, 18)
                 .addComponent(okButton)
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
 
         pack();
