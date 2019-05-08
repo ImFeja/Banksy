@@ -20,6 +20,7 @@ public class signUpGUI extends javax.swing.JFrame {
         initComponents();
         bank = new Bank("customer.txt");
     }
+
    
     /**
      * This method is called from within the constructor to initialize the form.

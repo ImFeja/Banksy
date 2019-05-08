@@ -18,10 +18,9 @@ public class Customer {
     public double balance;
     private double credit;
     private String pin;
-    private int accountNum;
     private boolean type; //true = credit, false equals checking
 
-    public Customer(int accountNum, String name, String address, double balance, double credit, String pin, boolean type) {
+    public Customer(String name, String address, double balance, double credit, String pin, boolean type) {
         this.name = name;
         this.address = address;
         this.balance = balance;
@@ -61,11 +60,6 @@ public class Customer {
 
     public double getBal() {
         return this.balance;
-    }
-    
-
-    public int getAccNum() {
-        return this.accountNum;
     }
     
     public boolean getType(){
