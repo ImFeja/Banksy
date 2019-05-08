@@ -156,7 +156,7 @@ public class BankLoginGUI extends javax.swing.JFrame {
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         Customer m = bank.loginCustomer(username.getText(), password.getText());
-        
+        bank.findCustomer("Andrew Watson");
         
         
     }//GEN-LAST:event_loginButtonActionPerformed
