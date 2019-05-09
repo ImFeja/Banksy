@@ -157,10 +157,11 @@ public class signUpGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
-        Bank bank = new Bank("customer.txt");
-        
+  
         bank.addCustomer(signUpName.getText(), signUpAddress.getText(), 0.0, -10000,  signUpPass.getText(), true);
         bank.saveCustomers("customer.txt");
+        BankLoginGUI obj = new BankLoginGUI();
+        obj.setVisible(true);
         
     }//GEN-LAST:event_okButtonActionPerformed
 
