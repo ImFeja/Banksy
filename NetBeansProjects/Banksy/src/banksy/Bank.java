@@ -53,9 +53,10 @@ public class Bank {
         }
     }
 
-    public Customer findCustomer(String name) {
+    public Customer findCustomer(String name, String pin) {
         for (Customer c : this.Customer) {
-            if (c.getName() == name) {
+            System.out.println(c.getName());
+            if (c.getName().equals(name) && c.getPin().equals(pin)) {
                 //found customer
                 return c;
             }
@@ -64,40 +65,39 @@ public class Bank {
         return null;
     }
     
-    public Customer loginCustomer(String name, String pin){
-          for (Customer c : this.Customer) {
-            if (c.getName() == name && c.getPin() == pin) {
-                //found customer
-                return c;
-            }
-        }
-        //Couldn't log in
-        return null;
-    }
+//    public Customer loginCustomer(String name, String pin){
+//          for (Customer c : this.Customer) {
+//            if (c.getName().equals(name) && c.getPin().equals(pin)) {
+//                //found customer
+//                return c;
+//            }
+//        }
+//        //Couldn't log in
+//        return null;
+//    }
 
     public void loadCustomer(String filename) {
         try {
 
             Scanner input = new Scanner(new File(filename));
-                for (Customer m : this.Customer) {
+                while (input.hasNext()) {
                     //adds everything that will be listed
-                    int accNum = input.nextInt();
+//                    int accNum = input.nextInt();
                     input.nextLine();
                     String name = input.nextLine();
                     String address = input.nextLine();
-                    int bal = input.nextInt();
+                    double bal = input.nextDouble();
                     input.nextLine();
-                    int lim = input.nextInt();
+                    double lim = input.nextDouble();
                     input.nextLine();
                     String pin = input.nextLine();
-                    input.nextLine();
                     boolean type = input.nextBoolean();
                     input.nextLine();
-                    input.nextLine();
-                    //if over credit limit track them down
-                    if(m.overCredit(m.getBal(), m.getCredit())){
-                        
-                    }
+//                    //if over credit limit track them down
+//                    if(m.overCredit(m.getBal(), m.getCredit())){
+//                        
+//                    }
+                    Customer customer = addCustomer(name, address, bal, lim, pin, type);
                 
             }
         } catch (Exception e) {
