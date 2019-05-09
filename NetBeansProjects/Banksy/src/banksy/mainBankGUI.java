@@ -10,13 +10,15 @@ package banksy;
  * @author watsa9604
  */
 public class mainBankGUI extends javax.swing.JFrame {
-
+    Bank bank = new Bank("customer.txt");
     
     /**
      * Creates new form mainBankGUI
      */
     public mainBankGUI() {
         initComponents();
+        //balLab1.setText(m.getBal());
+        
     }
 
     /**
@@ -45,6 +47,8 @@ public class mainBankGUI extends javax.swing.JFrame {
         YENLab = new javax.swing.JLabel();
         EURLab = new javax.swing.JLabel();
         USDLab = new javax.swing.JLabel();
+        welcomeLab = new javax.swing.JLabel();
+        nameDisplayLab = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -86,10 +90,19 @@ public class mainBankGUI extends javax.swing.JFrame {
         conversionLab.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         conversionLab.setText("Conversion Rates:");
 
+        welcomeLab.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        welcomeLab.setText("Welcome:");
+
+        nameDisplayLab.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(153, 153, 153))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -123,12 +136,13 @@ public class mainBankGUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(USDLab, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(YENLab, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(YENLab, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(welcomeLab)
+                        .addGap(18, 18, 18)
+                        .addComponent(nameDisplayLab, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(123, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(153, 153, 153))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -163,14 +177,17 @@ public class mainBankGUI extends javax.swing.JFrame {
                     .addComponent(EURLab)
                     .addComponent(USDLab)
                     .addComponent(YENLab))
-                .addContainerGap(167, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(welcomeLab)
+                    .addComponent(nameDisplayLab))
+                .addContainerGap(132, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void depositButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depositButtonActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_depositButtonActionPerformed
 
     private void withdrawlButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_withdrawlButtonActionPerformed
@@ -181,6 +198,9 @@ public class mainBankGUI extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+        
+        
+        
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -228,6 +248,8 @@ public class mainBankGUI extends javax.swing.JFrame {
     private javax.swing.JButton depositButton;
     private javax.swing.JLabel depositLab;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel nameDisplayLab;
+    private javax.swing.JLabel welcomeLab;
     private javax.swing.JButton withdrawlButton;
     private javax.swing.JLabel withdrawlLab;
     // End of variables declaration//GEN-END:variables
