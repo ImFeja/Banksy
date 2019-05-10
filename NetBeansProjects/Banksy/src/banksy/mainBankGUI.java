@@ -5,19 +5,36 @@
  */
 package banksy;
 
+
+
 /**
  *
  * @author watsa9604
  */
 public class mainBankGUI extends javax.swing.JFrame {
     Bank bank = new Bank("customer.txt");
+    Customer m ;
     
     /**
      * Creates new form mainBankGUI
      */
     public mainBankGUI() {
         initComponents();
-        //balLab1.setText(m.getBal());
+       
+
+        
+    }
+    
+       public mainBankGUI(Customer m) {
+        initComponents();
+        String BALANCE;
+        String CREDIT;
+        BALANCE = Double.valueOf(m.getBal()).toString();
+        CREDIT = Double.valueOf(m.getCredit()).toString();
+        this.m = m;
+        balLab1.setText("Current Balance: $"+ BALANCE);
+        creditLab.setText("Remaining Credit: $"+ CREDIT);
+        welcomeLab.setText("Welcome: " + m.getName());
         
     }
 
@@ -39,7 +56,6 @@ public class mainBankGUI extends javax.swing.JFrame {
         withdrawlLab = new javax.swing.JLabel();
         deposit = new javax.swing.JTextField();
         Withdrawl = new javax.swing.JTextField();
-        depositButton = new javax.swing.JButton();
         withdrawlButton = new javax.swing.JButton();
         conversionLab = new javax.swing.JLabel();
         conversion = new javax.swing.JTextField();
@@ -49,6 +65,7 @@ public class mainBankGUI extends javax.swing.JFrame {
         USDLab = new javax.swing.JLabel();
         welcomeLab = new javax.swing.JLabel();
         nameDisplayLab = new javax.swing.JLabel();
+        depositButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -73,13 +90,6 @@ public class mainBankGUI extends javax.swing.JFrame {
         withdrawlLab.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         withdrawlLab.setText("Withdrawl");
 
-        depositButton.setText("OK");
-        depositButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                depositButtonActionPerformed(evt);
-            }
-        });
-
         withdrawlButton.setText("OK");
         withdrawlButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,6 +104,13 @@ public class mainBankGUI extends javax.swing.JFrame {
         welcomeLab.setText("Welcome:");
 
         nameDisplayLab.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+
+        depositButton1.setText("OK");
+        depositButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                depositButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -126,8 +143,8 @@ public class mainBankGUI extends javax.swing.JFrame {
                                 .addComponent(conversion, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(depositButton)
-                            .addComponent(withdrawlButton)))
+                            .addComponent(withdrawlButton)
+                            .addComponent(depositButton1)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(86, 86, 86)
                         .addComponent(CANLab, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -161,13 +178,13 @@ public class mainBankGUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(depositLab)
                     .addComponent(deposit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(depositButton))
+                    .addComponent(depositButton1))
                 .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(withdrawlLab)
                     .addComponent(Withdrawl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(withdrawlButton))
-                .addGap(49, 49, 49)
+                .addGap(95, 95, 95)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(conversionLab)
                     .addComponent(conversion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -181,18 +198,32 @@ public class mainBankGUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(welcomeLab)
                     .addComponent(nameDisplayLab))
-                .addContainerGap(132, Short.MAX_VALUE))
+                .addContainerGap(86, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void depositButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depositButtonActionPerformed
-    }//GEN-LAST:event_depositButtonActionPerformed
-
     private void withdrawlButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_withdrawlButtonActionPerformed
-        // TODO add your handling code here:
+        
+       
+        
+        Double BALANCE;
+        BALANCE = Double.parseDouble(Withdrawl.getText());
+        m.subBal(BALANCE, m.getAccNum());
+        bank.saveCustomers("customer.txt");
+        
+        //Find the acc num, overwrite all with
+        bank.addCustomer(m.getName(), m.getAddress(), BALANCE, m.getCredit(), m.getPin(), m.getType());
+        //
     }//GEN-LAST:event_withdrawlButtonActionPerformed
+
+    private void depositButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depositButton1ActionPerformed
+        Double BALANCE;
+        BALANCE = Double.parseDouble(deposit.getText());
+        m.addBal(BALANCE, m.getAccNum());
+        bank.saveCustomers("customer.txt");
+    }//GEN-LAST:event_depositButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -245,7 +276,7 @@ public class mainBankGUI extends javax.swing.JFrame {
     private javax.swing.JLabel conversionLab;
     private javax.swing.JLabel creditLab;
     private javax.swing.JTextField deposit;
-    private javax.swing.JButton depositButton;
+    private javax.swing.JButton depositButton1;
     private javax.swing.JLabel depositLab;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel nameDisplayLab;

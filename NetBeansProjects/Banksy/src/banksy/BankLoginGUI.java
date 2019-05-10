@@ -15,13 +15,13 @@ import java.util.regex.Pattern;
 public class BankLoginGUI extends javax.swing.JFrame {
 
     Bank bank = new Bank("customer.txt");
-    
+
     /**
      * Creates new form BankGUI
      */
     public BankLoginGUI() {
         initComponents();
-        
+
     }
 
     /**
@@ -156,9 +156,8 @@ public class BankLoginGUI extends javax.swing.JFrame {
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         Customer m = bank.findCustomer(username.getText(), password.getText());
-
         if(m != null){
-        mainBankGUI obj = new mainBankGUI();
+        mainBankGUI obj = new mainBankGUI(m);
         obj.setVisible(true);
         } 
     }//GEN-LAST:event_loginButtonActionPerformed
