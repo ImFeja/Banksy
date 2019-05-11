@@ -68,7 +68,7 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="signButton" max="32767" attributes="0"/>
-                          <Component id="loginButton" min="-2" pref="73" max="-2" attributes="0"/>
+                          <Component id="loginButton" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>

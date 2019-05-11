@@ -214,7 +214,7 @@ public class mainBankGUI extends javax.swing.JFrame {
         bank.saveCustomers("customer.txt");
         
         //Find the acc num, overwrite all with
-        bank.addCustomer(m.getName(), m.getAddress(), BALANCE, m.getCredit(), m.getPin(), m.getType());
+        bank.addCustomer(m.getName(), m.getAddress(), BALANCE, m.getCredit(), m.getPin());
         //
     }//GEN-LAST:event_withdrawlButtonActionPerformed
 

@@ -41,14 +41,10 @@
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="signUpName" pref="207" max="32767" attributes="0"/>
                           <Component id="signUpAddress" pref="207" max="32767" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="chequeing" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="savings" min="-2" max="-2" attributes="0"/>
-                          </Group>
                           <Component id="signUpPass" alignment="0" max="32767" attributes="0"/>
+                          <Component id="creditLimitSignUp" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="122" max="32767" attributes="0"/>
+                      <EmptySpace pref="148" max="32767" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -79,14 +75,13 @@
                   <Component id="signUpPass" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="typeLab" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="chequeing" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="savings" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="typeLab" min="-2" max="-2" attributes="0"/>
+                  <Component id="creditLimitSignUp" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="okButton" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="46" max="32767" attributes="0"/>
+              <EmptySpace pref="45" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -94,7 +89,7 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="typeLab">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Type of account"/>
+        <Property name="text" type="java.lang.String" value="Credit Limit"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
@@ -129,22 +124,6 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="signUpAddressActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JRadioButton" name="chequeing">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Chequeing"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chequeingActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JRadioButton" name="savings">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Savings"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="savingsActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JLabel" name="signUpNameLab">
       <Properties>
         <Property name="text" type="java.lang.String" value="Name"/>
@@ -163,6 +142,11 @@
     <Component class="javax.swing.JTextField" name="signUpPass">
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="signUpPassActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="creditLimitSignUp">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="creditLimitSignUpActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

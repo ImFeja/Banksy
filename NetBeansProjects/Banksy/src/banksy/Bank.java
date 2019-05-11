@@ -33,8 +33,8 @@ public class Bank {
         Customer.get(accNum).balance = current - subBal;
     }
 
-    public Customer addCustomer(String name, String address, double bal, double credit, String pin, boolean type) {
-        Customer aCustomer = new Customer(accNumber, name, address, bal, credit, pin, type);
+    public Customer addCustomer(String name, String address, double bal, double credit, String pin) {
+        Customer aCustomer = new Customer(accNumber, name, address, bal, credit, pin);
         accNumber++;
         this.Customer.add(aCustomer);
         return aCustomer;
@@ -49,7 +49,7 @@ public class Bank {
 
             }
         } catch (Exception e) {
-            System.err.println("Oopsiewoopsie, sumtin went wong: " + e);
+            System.err.println("Oopsiewoopsie, sumtin went wong in checkBal: " + e);
         }
     }
 
@@ -89,17 +89,15 @@ public class Bank {
                 double lim = input.nextDouble();
                 input.nextLine();
                 String pin = input.nextLine();
-                boolean type = input.nextBoolean();
-                input.nextLine();
 //                    //if over credit limit track them down
 //                    if(m.overCredit(m.getBal(), m.getCredit())){
 //                        
 //                    }
-                Customer customer = addCustomer(name, address, bal, lim, pin, type);
+                Customer customer = addCustomer(name, address, bal, lim, pin);
 
             }
         } catch (Exception e) {
-            System.err.println("Oopsiewoopsie, sumtin went wong: " + e);
+            System.err.println("Oopsiewoopsie, sumtin went wong in loadCustomer: " + e);
         }
     }
 
@@ -127,12 +125,11 @@ public class Bank {
                 output.println(c.getBal());
                 output.println(c.getCredit());
                 output.println(c.getPin());
-                output.println(c.getType());
             }
             output.close();
 
         } catch (Exception e) {
-            System.err.println("Oopsiewoopsie, sumtin went wong: " + e);
+            System.err.println("Oopsiewoopsie, sumtin went wong in saveCustomers: " + e);
         }
     }
 

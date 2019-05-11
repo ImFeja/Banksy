@@ -1,28 +1,6 @@
-4
-Dylan Ott
-69 nice st
-0.0
--10000.0
-6969
-false
-5
-Andrew Watson
-130 Old Huron Rd
-0.0
--10000.0
-7777
-false
-6
-Laura McLanister
-456 titty rd
-0.0
--10000.0
-1111
-false
-7
-bubba john
-4444444444
-0.0
--10000.0
-6565
-false
+0
+Kanye West
+1 Kanye West Street
+999.99
+-98765.0
+0000
