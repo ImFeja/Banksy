@@ -206,7 +206,7 @@ public class mainBankGUI extends javax.swing.JFrame {
 
     private void withdrawlButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_withdrawlButtonActionPerformed
         
-       
+       //amount = deposit + amount
         
         Double BALANCE;
         BALANCE = Double.parseDouble(Withdrawl.getText());
