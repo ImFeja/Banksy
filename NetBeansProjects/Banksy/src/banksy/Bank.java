@@ -35,7 +35,11 @@ public class Bank {
 
     public Customer addCustomer(String name, String address, double bal, double credit, String pin, boolean type) {
         Customer aCustomer = new Customer(accNumber, name, address, bal, credit, pin, type);
+        if(accNumber >= 1){
         accNumber++;
+        } else {
+            accNumber++;
+        }
         this.Customer.add(aCustomer);
         return aCustomer;
     }
@@ -45,7 +49,7 @@ public class Bank {
 
             for (Customer m : this.Customer) {
 
-                System.out.println(" " + m.getBal());
+                
 
             }
         } catch (Exception e) {
@@ -55,7 +59,7 @@ public class Bank {
 
     public Customer findCustomer(String name, String pin) {
         for (Customer c : this.Customer) {
-            System.out.println(c.getName());
+          
             if (c.getName().equals(name) && c.getPin().equals(pin)) {
                 //found customer
                 return c;
