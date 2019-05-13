@@ -5,8 +5,11 @@
  */
 package banksy;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +25,7 @@ public class Bank {
     }
 
     public void addBal(double addBal, int accNum) {
+        
         Scanner input = new Scanner(System.in);
         double current = this.Customer.get(accNum).getBal();
         Customer.get(accNum).balance = current + addBal;
@@ -132,5 +136,30 @@ public class Bank {
             System.err.println("Oopsiewoopsie, sumtin went wong in saveCustomers: " + e);
         }
     }
+    
+    //public static void changeBal(String replaceWith, String type) {
+    //try {
+      //  // input the (modified) file content to the StringBuffer "input"
+        //BufferedReader file = new BufferedReader(new FileReader("customer.txt"));
+        //StringBuffer inputBuffer = new StringBuffer();
+        //String line;
+
+       // while ((line = file.readLine()) != null) {
+         //   line = replaceWith;
+           // inputBuffer.append(line);
+            //inputBuffer.append('\n');
+        //}
+        //file.close();
+
+        // write the new string with the replaced line OVER the same file
+        //FileOutputStream fileOut = new FileOutputStream("customer.txt");
+        //fileOut.write(inputBuffer.toString().getBytes());
+        //fileOut.close();
+
+    //} catch (Exception e) {
+       // System.out.println("Problem reading file.");
+    //}
+//}
+    
 
 }

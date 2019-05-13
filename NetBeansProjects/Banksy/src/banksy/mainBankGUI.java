@@ -5,6 +5,10 @@
  */
 package banksy;
 
+import java.io.BufferedReader;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+
 
 
 /**
@@ -214,15 +218,22 @@ public class mainBankGUI extends javax.swing.JFrame {
         bank.saveCustomers("customer.txt");
         
         //Find the acc num, overwrite all with
-        bank.addCustomer(m.getName(), m.getAddress(), BALANCE, m.getCredit(), m.getPin());
+        //bank.addCustomer(m.getName(), m.getAddress(), BALANCE, m.getCredit(), m.getPin());
         //
     }//GEN-LAST:event_withdrawlButtonActionPerformed
 
     private void depositButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depositButton1ActionPerformed
+     
+        
         Double BALANCE;
         BALANCE = Double.parseDouble(deposit.getText());
         m.addBal(BALANCE, m.getAccNum());
-        bank.saveCustomers("customer.txt");
+        
+        
+         
+         
+         bank.saveCustomers("customer.txt");
+         
     }//GEN-LAST:event_depositButton1ActionPerformed
 
     /**
