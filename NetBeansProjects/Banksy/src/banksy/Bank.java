@@ -5,8 +5,12 @@
  */
 package banksy;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +19,7 @@ import java.util.Scanner;
 public class Bank {
 
     private List<Customer> Customer = new ArrayList<>();
-    private static int accNumber;
+    private int accNumber;
 
     public Bank(String customerList) {
         loadCustomer(customerList);
@@ -33,13 +37,9 @@ public class Bank {
         Customer.get(accNum).balance = current - subBal;
     }
 
-    public Customer addCustomer(String name, String address, double bal, double credit, String pin, boolean type) {
-        Customer aCustomer = new Customer(accNumber, name, address, bal, credit, pin, type);
-        if(accNumber >= 1){
+    public Customer addCustomer(String name, String address, double bal, double credit, String pin) {
+        Customer aCustomer = new Customer(accNumber, name, address, bal, credit, pin);
         accNumber++;
-        } else {
-            accNumber++;
-        }
         this.Customer.add(aCustomer);
         return aCustomer;
     }
@@ -49,17 +49,15 @@ public class Bank {
 
             for (Customer m : this.Customer) {
 
-                
-
             }
         } catch (Exception e) {
-            System.err.println("Oopsiewoopsie, sumtin went wong: " + e);
+            System.err.println("Oopsiewoopsie, sumtin went wong in checkBal: " + e);
         }
     }
 
     public Customer findCustomer(String name, String pin) {
         for (Customer c : this.Customer) {
-          
+
             if (c.getName().equals(name) && c.getPin().equals(pin)) {
                 //found customer
                 return c;
@@ -93,17 +91,15 @@ public class Bank {
                 double lim = input.nextDouble();
                 input.nextLine();
                 String pin = input.nextLine();
-                boolean type = input.nextBoolean();
-                input.nextLine();
 //                    //if over credit limit track them down
 //                    if(m.overCredit(m.getBal(), m.getCredit())){
 //                        
 //                    }
-                Customer customer = addCustomer(name, address, bal, lim, pin, type);
+                Customer customer = addCustomer(name, address, bal, lim, pin);
 
             }
         } catch (Exception e) {
-            System.err.println("Oopsiewoopsie, sumtin went wong: " + e);
+            System.err.println("Oopsiewoopsie, sumtin went wong in loadCustomer: " + e);
         }
     }
 
@@ -111,11 +107,9 @@ public class Bank {
         try {
             Scanner input = new Scanner(new File(filename));
             PrintWriter output = new PrintWriter(new File(filename));
-            
-            
 
         } catch (Exception e) {
-            
+
             System.err.println("Oopsiewoopsie, sumtin went wong in updateCustomer ÚwÚ: " + e);
 
         }
@@ -131,12 +125,35 @@ public class Bank {
                 output.println(c.getBal());
                 output.println(c.getCredit());
                 output.println(c.getPin());
-                output.println(c.getType());
             }
             output.close();
 
         } catch (Exception e) {
-            System.err.println("Oopsiewoopsie, sumtin went wong: " + e);
+            System.err.println("Oopsiewoopsie, sumtin went wong in saveCustomers: " + e);
+        }
+    }
+
+    public static void changeBal(String replaceWith, String type) throws FileNotFoundException, IOException {
+        try {
+            // input the (modified) file content to the StringBuffer "input"
+            BufferedReader file = new BufferedReader(new FileReader("customer.txt"));
+            StringBuffer inputBuffer = new StringBuffer();
+            String line;
+
+            while ((line = file.readLine()) != null) {
+                line = replaceWith;
+                inputBuffer.append(line);
+                inputBuffer.append('\n');
+            }
+            file.close();
+
+            //write the new string with the replaced line OVER the same file
+            FileOutputStream fileOut = new FileOutputStream("customer.txt");
+            fileOut.write(inputBuffer.toString().getBytes());
+            fileOut.close();
+
+        } catch (Exception e) {
+            System.out.println("Oopsiewoopsie, sumtin went wong");
         }
     }
 

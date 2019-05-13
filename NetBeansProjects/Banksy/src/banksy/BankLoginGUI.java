@@ -128,7 +128,7 @@ public class BankLoginGUI extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(signButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(loginButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(120, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -156,29 +156,27 @@ public class BankLoginGUI extends javax.swing.JFrame {
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         Customer m = bank.findCustomer(username.getText(), password.getText());
-        if(m != null){
-        mainBankGUI obj = new mainBankGUI(m);
-        obj.setVisible(true);
-        } 
+        if (m != null) {
+            mainBankGUI obj = new mainBankGUI(m);
+            obj.setVisible(true);
+        }
     }//GEN-LAST:event_loginButtonActionPerformed
 
     private void usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameActionPerformed
-        
-        
-        
+
+
     }//GEN-LAST:event_usernameActionPerformed
 
     private void signButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signButtonActionPerformed
-        
+
         signUpGUI obj = new signUpGUI();
         obj.setVisible(true);
-        
+
     }//GEN-LAST:event_signButtonActionPerformed
 
     private void passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordActionPerformed
-        
-        
-        
+
+
     }//GEN-LAST:event_passwordActionPerformed
 
     private void usernameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usernameKeyReleased

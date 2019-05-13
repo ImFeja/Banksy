@@ -11,8 +11,9 @@ package banksy;
  */
 public class signUpGUI extends javax.swing.JFrame {
 
-    
     Bank bank;
+    double creditLimit;
+
     /**
      * Creates new form signUpGUI
      */
@@ -20,7 +21,7 @@ public class signUpGUI extends javax.swing.JFrame {
         initComponents();
         bank = new Bank("customer.txt");
     }
-   
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -35,16 +36,15 @@ public class signUpGUI extends javax.swing.JFrame {
         signUpName = new javax.swing.JTextField();
         okButton = new javax.swing.JButton();
         signUpAddress = new javax.swing.JTextField();
-        chequeing = new javax.swing.JRadioButton();
-        savings = new javax.swing.JRadioButton();
         signUpNameLab = new javax.swing.JLabel();
         addressLab = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         signUpPass = new javax.swing.JTextField();
+        creditLimitSignUp = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        typeLab.setText("Type of account");
+        typeLab.setText("Credit Limit");
 
         jLabel2.setBackground(new java.awt.Color(51, 51, 51));
         jLabel2.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
@@ -70,20 +70,6 @@ public class signUpGUI extends javax.swing.JFrame {
             }
         });
 
-        chequeing.setText("Chequeing");
-        chequeing.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chequeingActionPerformed(evt);
-            }
-        });
-
-        savings.setText("Savings");
-        savings.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                savingsActionPerformed(evt);
-            }
-        });
-
         signUpNameLab.setText("Name");
 
         addressLab.setText("Address");
@@ -93,6 +79,12 @@ public class signUpGUI extends javax.swing.JFrame {
         signUpPass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 signUpPassActionPerformed(evt);
+            }
+        });
+
+        creditLimitSignUp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                creditLimitSignUpActionPerformed(evt);
             }
         });
 
@@ -116,12 +108,9 @@ public class signUpGUI extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(signUpName, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
                             .addComponent(signUpAddress, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(chequeing)
-                                .addGap(18, 18, 18)
-                                .addComponent(savings))
-                            .addComponent(signUpPass))
-                        .addContainerGap(122, Short.MAX_VALUE))))
+                            .addComponent(signUpPass)
+                            .addComponent(creditLimitSignUp))
+                        .addContainerGap(148, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(okButton, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -144,25 +133,32 @@ public class signUpGUI extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(signUpPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(typeLab)
-                    .addComponent(chequeing)
-                    .addComponent(savings))
+                    .addComponent(creditLimitSignUp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(okButton)
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
-  
-        bank.addCustomer(signUpName.getText(), signUpAddress.getText(), 0.0, -10000,  signUpPass.getText(), true);
-        bank.saveCustomers("customer.txt");
-        BankLoginGUI obj = new BankLoginGUI();
-        obj.setVisible(true);
-        
+
+        creditLimit = Double.parseDouble(creditLimitSignUp.getText());
+
+        if (creditLimit > 0) {
+            creditLimit = creditLimit * (-1);
+        }
+
+        if (signUpName.getText().length() != 0 && signUpAddress.getText().length() != 0 && signUpPass.getText().length() != 0 && creditLimitSignUp.getText().length() != 0) {
+            bank.addCustomer(signUpName.getText(), signUpAddress.getText(), 0.0, creditLimit, signUpPass.getText());
+            bank.saveCustomers("customer.txt");
+            BankLoginGUI obj = new BankLoginGUI();
+            obj.setVisible(true);
+        }
+
     }//GEN-LAST:event_okButtonActionPerformed
 
     private void signUpNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signUpNameActionPerformed
@@ -173,19 +169,14 @@ public class signUpGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_signUpAddressActionPerformed
 
-    private void chequeingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chequeingActionPerformed
-        
-    }//GEN-LAST:event_chequeingActionPerformed
-
     private void signUpPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signUpPassActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_signUpPassActionPerformed
 
-    private void savingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savingsActionPerformed
-        
-    }//GEN-LAST:event_savingsActionPerformed
+    private void creditLimitSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_creditLimitSignUpActionPerformed
 
-    
+    }//GEN-LAST:event_creditLimitSignUpActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -221,11 +212,10 @@ public class signUpGUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel addressLab;
-    private javax.swing.JRadioButton chequeing;
+    private javax.swing.JTextField creditLimitSignUp;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JButton okButton;
-    private javax.swing.JRadioButton savings;
     private javax.swing.JTextField signUpAddress;
     private javax.swing.JTextField signUpName;
     private javax.swing.JLabel signUpNameLab;

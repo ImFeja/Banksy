@@ -19,9 +19,8 @@ public class Customer {
     private double credit;
     private String pin;
     private int accountNum;
-    private boolean type; //true = credit, false equals checking
 
-    public Customer(int accountNum, String name, String address, double balance, double credit, String pin, boolean type) {
+    public Customer(int accountNum, String name, String address, double balance, double credit, String pin) {
         this.name = name;
         this.address = address;
         this.balance = balance;
@@ -50,31 +49,22 @@ public class Customer {
     public String getAddress() {
         return this.address;
     }
-    
-    public String getPin(){
+
+    public String getPin() {
         return this.pin;
     }
-    
-    public double getCredit(){
+
+    public double getCredit() {
         return this.credit;
     }
-       
 
     public double getBal() {
         return this.balance;
     }
-    
 
     public int getAccNum() {
         return this.accountNum;
     }
-    
-    public boolean getType(){
-        return this.type;
-        
-    }
-    
-  
 
     //Use when making purchase, are you over your credit limit? If it will go over it will return true, so use if = true then block it.
     public boolean overCredit(double b, double n) {
@@ -88,4 +78,28 @@ public class Customer {
 
     }
 
+//        public static void changeBal(String replaceWith, String type) throws FileNotFoundException, IOException {
+//    try {
+//      // input the (modified) file content to the StringBuffer "input"
+//        BufferedReader file = new BufferedReader(new FileReader("customer.txt"));
+//        StringBuffer inputBuffer = new StringBuffer();
+//        String line;
+//
+//        while ((line = file.readLine()) != null) {
+//            line = replaceWith;
+//            inputBuffer.append(line);
+//            inputBuffer.append('\n');
+//        }
+//        file.close();
+//
+//         //write the new string with the replaced line OVER the same file
+//         FileOutputStream fileOut = new FileOutputStream("customer.txt");
+//        fileOut.write(inputBuffer.toString().getBytes());
+//        fileOut.close();
+//
+//    }catch (Exception e) {
+//        System.out.println("Oopsiewoopsie, sumtin went wong");
+//    }
+//}
+//    
 }

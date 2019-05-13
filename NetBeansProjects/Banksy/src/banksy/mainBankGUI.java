@@ -5,37 +5,31 @@
  */
 package banksy;
 
-
+import java.io.BufferedReader;
+import java.io.FileOutputStream;
+import java.io.FileReader;
 
 /**
  *
  * @author watsa9604
  */
 public class mainBankGUI extends javax.swing.JFrame {
+
     Bank bank = new Bank("customer.txt");
-    Customer m ;
-    
+    Customer m;
+
     /**
      * Creates new form mainBankGUI
      */
     public mainBankGUI() {
         initComponents();
-       
-
-        
     }
-    
-       public mainBankGUI(Customer m) {
+
+    public mainBankGUI(Customer m) {
         initComponents();
-        String BALANCE;
-        String CREDIT;
-        BALANCE = Double.valueOf(m.getBal()).toString();
-        CREDIT = Double.valueOf(m.getCredit()).toString();
         this.m = m;
-        balLab1.setText("Current Balance: $"+ BALANCE);
-        creditLab.setText("Remaining Credit: $"+ CREDIT);
         welcomeLab.setText("Welcome: " + m.getName());
-        
+
     }
 
     /**
@@ -205,33 +199,37 @@ public class mainBankGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void withdrawlButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_withdrawlButtonActionPerformed
-        
-       //amount = deposit + amount
-        
+
         Double BALANCE;
         BALANCE = Double.parseDouble(Withdrawl.getText());
-        m.subBal(BALANCE, m.getAccNum());
-        bank.saveCustomers("customer.txt");
-        
+        if (BALANCE < m.getBal()) {
+            m.subBal(BALANCE, m.getAccNum());
+            balLab1.setText("Current Balance: $" + BALANCE);
+            bank.saveCustomers("customer.txt");
+        } else {
+            Withdrawl.setText("Insufficient Balance, Please try again.");
+        }
+
         //Find the acc num, overwrite all with
-        bank.addCustomer(m.getName(), m.getAddress(), BALANCE, m.getCredit(), m.getPin(), m.getType());
+        //bank.addCustomer(m.getName(), m.getAddress(), BALANCE, m.getCredit(), m.getPin());
         //
     }//GEN-LAST:event_withdrawlButtonActionPerformed
 
     private void depositButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depositButton1ActionPerformed
+
         Double BALANCE;
         BALANCE = Double.parseDouble(deposit.getText());
         m.addBal(BALANCE, m.getAccNum());
+        balLab1.setText("Current Balance: $" + BALANCE);
         bank.saveCustomers("customer.txt");
+
     }//GEN-LAST:event_depositButton1ActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        
-        
-        
+
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
