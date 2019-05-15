@@ -5,9 +5,6 @@
  */
 package banksy;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 /**
  *
  * @author watsa9604
