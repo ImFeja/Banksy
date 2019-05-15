@@ -158,8 +158,8 @@ public class Bank {
             System.out.println("Oopsiewoopsie, sumtin went wong");
         }
     }
-    
-    public void emptyList() throws IOException{
+
+    public void emptyList() throws IOException {
         PrintWriter writer = new PrintWriter("customer.txt");
         writer.print("");
         writer.close();

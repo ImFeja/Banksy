@@ -19,7 +19,7 @@ public class Customer {
     private double credit;
     private String pin;
     private int accountNum;
-    
+
     public Customer(int accountNum, String name, String address, double balance, double credit, String pin) {
         this.name = name;
         this.address = address;

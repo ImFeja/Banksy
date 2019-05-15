@@ -207,11 +207,12 @@ public class mainBankGUI extends javax.swing.JFrame {
         withdraw = Double.parseDouble(Withdrawl.getText());
         if (withdraw < m.getBal()) {
             m.subBal(withdraw, m.getAccNum());
-            
+
             bank.saveCustomers("customer.txt");
         } else {
             Withdrawl.setText("Insufficient Balance, Please try again.");
         }
+        balLab1.setText("Current Balance: $" + m.getBal());
 
         //Find the acc num, overwrite all with
         //bank.addCustomer(m.getName(), m.getAddress(), BALANCE, m.getCredit(), m.getPin());
@@ -224,6 +225,7 @@ public class mainBankGUI extends javax.swing.JFrame {
         BALANCE = Double.parseDouble(deposit.getText());
         m.addBal(BALANCE, m.getAccNum());
         bank.saveCustomers("customer.txt");
+        balLab1.setText("Current Balance: $" + m.getBal());
 
     }//GEN-LAST:event_depositButton1ActionPerformed
 
