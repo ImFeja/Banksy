@@ -37,6 +37,7 @@ public class mainBankGUI extends javax.swing.JFrame {
         //Outputs text to the GUI
         welcomeLab.setText("Welcome: " + m.getName());
         balLab1.setText("Current Balance: $" + m.getBal());
+        creditLab.setText("Credit Limit: $" + m.getCredit());
     }
 
     /**
@@ -194,7 +195,7 @@ public class mainBankGUI extends javax.swing.JFrame {
         //makes sure that the customer cannot withdraw more money than they have
         Double withdraw;
         withdraw = Double.parseDouble(Withdrawl.getText());
-        if (withdraw < m.getBal()) {
+        if (m.getBal() - withdraw >= m.getCredit()) {
             m.subBal(withdraw, m.getAccNum());
 
             bank.saveCustomers("customer.txt");
