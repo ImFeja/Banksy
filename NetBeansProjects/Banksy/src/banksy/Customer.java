@@ -31,15 +31,17 @@ public class Customer {
     }
 
     public void addBal(double addBal, int accNum) {
+        if(addBal > 0){
         Scanner input = new Scanner(System.in);
         double current = this.getBal();
-        balance = current + addBal;
+        this.balance = current + addBal;
+        }
     }
 
     public void subBal(double subBal, int accNum) {
         Scanner input = new Scanner(System.in);
         double current = this.getBal();
-        balance = current - subBal;
+        this.balance = current - subBal;
     }
 
     public String getName() {

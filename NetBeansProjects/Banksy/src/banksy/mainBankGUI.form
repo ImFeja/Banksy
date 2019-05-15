@@ -32,27 +32,18 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="balLab1" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="creditLab" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="depositLab" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="withdrawlLab" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="balLab1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="creditLab" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="depositLab" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="withdrawlLab" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="ChangeBalLab" max="32767" attributes="0"/>
-                                  <Component id="ChangeCreditLab" max="32767" attributes="0"/>
-                                  <Component id="deposit" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="Withdrawl" pref="154" max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="conversionLab" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="conversion" pref="152" max="32767" attributes="0"/>
-                          </Group>
+                          <Component id="ChangeBalLab" max="32767" attributes="0"/>
+                          <Component id="ChangeCreditLab" max="32767" attributes="0"/>
+                          <Component id="deposit" alignment="0" max="32767" attributes="0"/>
+                          <Component id="Withdrawl" pref="154" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -108,12 +99,7 @@
                   <Component id="Withdrawl" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="withdrawlButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="95" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="conversionLab" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="conversion" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="126" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="CANLab" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="EURLab" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -202,16 +188,6 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="withdrawlButtonActionPerformed"/>
       </Events>
-    </Component>
-    <Component class="javax.swing.JLabel" name="conversionLab">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Tahoma" size="14" style="1"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Conversion Rates:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="conversion">
     </Component>
     <Component class="javax.swing.JLabel" name="CANLab">
     </Component>

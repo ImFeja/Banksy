@@ -8,6 +8,9 @@ package banksy;
 import java.io.BufferedReader;
 import java.io.FileOutputStream;
 import java.io.FileReader;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -26,10 +29,10 @@ public class mainBankGUI extends javax.swing.JFrame {
     }
 
     public mainBankGUI(Customer m) {
+        this.m = bank.findCustomer(m.getName(), m.getPin());
         initComponents();
-        this.m = m;
         welcomeLab.setText("Welcome: " + m.getName());
-
+        balLab1.setText("Current Balance: $" + m.getBal());
     }
 
     /**
@@ -51,8 +54,6 @@ public class mainBankGUI extends javax.swing.JFrame {
         deposit = new javax.swing.JTextField();
         Withdrawl = new javax.swing.JTextField();
         withdrawlButton = new javax.swing.JButton();
-        conversionLab = new javax.swing.JLabel();
-        conversion = new javax.swing.JTextField();
         CANLab = new javax.swing.JLabel();
         YENLab = new javax.swing.JLabel();
         EURLab = new javax.swing.JLabel();
@@ -91,9 +92,6 @@ public class mainBankGUI extends javax.swing.JFrame {
             }
         });
 
-        conversionLab.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        conversionLab.setText("Conversion Rates:");
-
         welcomeLab.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         welcomeLab.setText("Welcome:");
 
@@ -118,23 +116,17 @@ public class mainBankGUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(balLab1)
+                            .addComponent(creditLab)
+                            .addComponent(depositLab)
+                            .addComponent(withdrawlLab))
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(balLab1)
-                                    .addComponent(creditLab)
-                                    .addComponent(depositLab)
-                                    .addComponent(withdrawlLab))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(ChangeBalLab, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(ChangeCreditLab, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(deposit)
-                                    .addComponent(Withdrawl, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(conversionLab)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(conversion, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)))
+                            .addComponent(ChangeBalLab, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(ChangeCreditLab, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(deposit)
+                            .addComponent(Withdrawl, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(withdrawlButton)
@@ -178,11 +170,7 @@ public class mainBankGUI extends javax.swing.JFrame {
                     .addComponent(withdrawlLab)
                     .addComponent(Withdrawl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(withdrawlButton))
-                .addGap(95, 95, 95)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(conversionLab)
-                    .addComponent(conversion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(126, 126, 126)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CANLab)
                     .addComponent(EURLab)
@@ -200,15 +188,16 @@ public class mainBankGUI extends javax.swing.JFrame {
 
     private void withdrawlButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_withdrawlButtonActionPerformed
 
-        Double BALANCEW;
-        BALANCEW = Double.parseDouble(Withdrawl.getText());
-        if (BALANCEW < m.getBal()) {
-            m.subBal(BALANCEW, m.getAccNum());
-            balLab1.setText("Current Balance: $" + BALANCEW);
+        Double withdraw;
+        withdraw = Double.parseDouble(Withdrawl.getText());
+        if (withdraw < m.getBal()) {
+            m.subBal(withdraw, m.getAccNum());
+
             bank.saveCustomers("customer.txt");
         } else {
             Withdrawl.setText("Insufficient Balance, Please try again.");
         }
+        balLab1.setText("Current Balance: $" + m.getBal());
 
         //Find the acc num, overwrite all with
         //bank.addCustomer(m.getName(), m.getAddress(), BALANCE, m.getCredit(), m.getPin());
@@ -217,11 +206,11 @@ public class mainBankGUI extends javax.swing.JFrame {
 
     private void depositButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depositButton1ActionPerformed
 
-        Double BALANCED;
-        BALANCED = Double.parseDouble(deposit.getText());
-        m.addBal(BALANCED, m.getAccNum());
-        balLab1.setText("Current Balance: $" + BALANCED);
+        Double BALANCE;
+        BALANCE = Double.parseDouble(deposit.getText());
+        m.addBal(BALANCE, m.getAccNum());
         bank.saveCustomers("customer.txt");
+        balLab1.setText("Current Balance: $" + m.getBal());
 
     }//GEN-LAST:event_depositButton1ActionPerformed
 
@@ -270,8 +259,6 @@ public class mainBankGUI extends javax.swing.JFrame {
     private javax.swing.JTextField Withdrawl;
     private javax.swing.JLabel YENLab;
     private javax.swing.JLabel balLab1;
-    private javax.swing.JTextField conversion;
-    private javax.swing.JLabel conversionLab;
     private javax.swing.JLabel creditLab;
     private javax.swing.JTextField deposit;
     private javax.swing.JButton depositButton1;

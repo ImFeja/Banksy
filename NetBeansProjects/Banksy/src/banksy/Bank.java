@@ -10,8 +10,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -155,6 +157,13 @@ public class Bank {
         } catch (Exception e) {
             System.out.println("Oopsiewoopsie, sumtin went wong");
         }
+    }
+
+    public void emptyList() throws IOException {
+        PrintWriter writer = new PrintWriter("customer.txt");
+        writer.print("");
+        writer.close();
+
     }
 
 }
