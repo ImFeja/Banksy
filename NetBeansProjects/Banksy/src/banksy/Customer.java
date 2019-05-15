@@ -19,7 +19,7 @@ public class Customer {
     private double credit;
     private String pin;
     private int accountNum;
-
+    
     public Customer(int accountNum, String name, String address, double balance, double credit, String pin) {
         this.name = name;
         this.address = address;
@@ -33,13 +33,13 @@ public class Customer {
     public void addBal(double addBal, int accNum) {
         Scanner input = new Scanner(System.in);
         double current = this.getBal();
-        balance = current + addBal;
+        this.balance = current + addBal;
     }
 
     public void subBal(double subBal, int accNum) {
         Scanner input = new Scanner(System.in);
         double current = this.getBal();
-        balance = current - subBal;
+        this.balance = current - subBal;
     }
 
     public String getName() {

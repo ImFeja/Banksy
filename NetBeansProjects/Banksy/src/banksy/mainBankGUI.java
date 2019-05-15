@@ -8,6 +8,9 @@ package banksy;
 import java.io.BufferedReader;
 import java.io.FileOutputStream;
 import java.io.FileReader;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -26,10 +29,10 @@ public class mainBankGUI extends javax.swing.JFrame {
     }
 
     public mainBankGUI(Customer m) {
+        this.m = bank.findCustomer(m.getName(), m.getPin());
         initComponents();
-        this.m = m;
         welcomeLab.setText("Welcome: " + m.getName());
-
+        balLab1.setText("Current Balance: $" + m.getBal());
     }
 
     /**
@@ -200,11 +203,11 @@ public class mainBankGUI extends javax.swing.JFrame {
 
     private void withdrawlButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_withdrawlButtonActionPerformed
 
-        Double BALANCE;
-        BALANCE = Double.parseDouble(Withdrawl.getText());
-        if (BALANCE < m.getBal()) {
-            m.subBal(BALANCE, m.getAccNum());
-            balLab1.setText("Current Balance: $" + BALANCE);
+        Double withdraw;
+        withdraw = Double.parseDouble(Withdrawl.getText());
+        if (withdraw < m.getBal()) {
+            m.subBal(withdraw, m.getAccNum());
+            
             bank.saveCustomers("customer.txt");
         } else {
             Withdrawl.setText("Insufficient Balance, Please try again.");
@@ -220,7 +223,6 @@ public class mainBankGUI extends javax.swing.JFrame {
         Double BALANCE;
         BALANCE = Double.parseDouble(deposit.getText());
         m.addBal(BALANCE, m.getAccNum());
-        balLab1.setText("Current Balance: $" + BALANCE);
         bank.saveCustomers("customer.txt");
 
     }//GEN-LAST:event_depositButton1ActionPerformed
