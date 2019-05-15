@@ -146,12 +146,15 @@ public class signUpGUI extends javax.swing.JFrame {
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
 
+        //parses the text within the sign up text field into a double
         creditLimit = Double.parseDouble(creditLimitSignUp.getText());
 
+        //if credit exists make it negative
         if (creditLimit > 0) {
             creditLimit = creditLimit * (-1);
         }
 
+        //when the ok button is hit, get the inputted details that the customer added and make them an official customer
         if (signUpName.getText().length() != 0 && signUpAddress.getText().length() != 0 && signUpPass.getText().length() != 0 && creditLimitSignUp.getText().length() != 0) {
             bank.addCustomer(signUpName.getText(), signUpAddress.getText(), 0.0, creditLimit, signUpPass.getText());
             bank.saveCustomers("customer.txt");

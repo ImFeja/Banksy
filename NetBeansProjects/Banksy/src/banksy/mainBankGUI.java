@@ -18,7 +18,9 @@ import java.util.logging.Logger;
  */
 public class mainBankGUI extends javax.swing.JFrame {
 
+    //creates a bank
     Bank bank = new Bank("customer.txt");
+    //creates a variable to hold the information of the customer that just logged in
     Customer m;
 
     /**
@@ -29,8 +31,10 @@ public class mainBankGUI extends javax.swing.JFrame {
     }
 
     public mainBankGUI(Customer m) {
+        //gets the pin and name of the customer that logged in
         this.m = bank.findCustomer(m.getName(), m.getPin());
         initComponents();
+        //Outputs text to the GUI
         welcomeLab.setText("Welcome: " + m.getName());
         balLab1.setText("Current Balance: $" + m.getBal());
     }
@@ -187,7 +191,7 @@ public class mainBankGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void withdrawlButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_withdrawlButtonActionPerformed
-
+        //makes sure that the customer cannot withdraw more money than they have
         Double withdraw;
         withdraw = Double.parseDouble(Withdrawl.getText());
         if (withdraw < m.getBal()) {
@@ -195,21 +199,22 @@ public class mainBankGUI extends javax.swing.JFrame {
 
             bank.saveCustomers("customer.txt");
         } else {
+            //sets text on the GUI
             Withdrawl.setText("Insufficient Balance, Please try again.");
         }
+        //sets text on the GUI
         balLab1.setText("Current Balance: $" + m.getBal());
 
-        //Find the acc num, overwrite all with
-        //bank.addCustomer(m.getName(), m.getAddress(), BALANCE, m.getCredit(), m.getPin());
-        //
     }//GEN-LAST:event_withdrawlButtonActionPerformed
 
     private void depositButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depositButton1ActionPerformed
 
+        //adds balance to the customer
         Double BALANCE;
         BALANCE = Double.parseDouble(deposit.getText());
         m.addBal(BALANCE, m.getAccNum());
         bank.saveCustomers("customer.txt");
+        //sets text on the GUI
         balLab1.setText("Current Balance: $" + m.getBal());
 
     }//GEN-LAST:event_depositButton1ActionPerformed

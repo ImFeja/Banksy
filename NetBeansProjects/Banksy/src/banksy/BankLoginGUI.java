@@ -155,6 +155,7 @@ public class BankLoginGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
+        //allows the customer to login with the proper information
         Customer m = bank.findCustomer(username.getText(), password.getText());
         if (m != null) {
             mainBankGUI obj = new mainBankGUI(m);
@@ -169,6 +170,7 @@ public class BankLoginGUI extends javax.swing.JFrame {
 
     private void signButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signButtonActionPerformed
 
+        //when the signup button is pressed, takes them to the signUp GUI
         signUpGUI obj = new signUpGUI();
         obj.setVisible(true);
 
@@ -180,14 +182,7 @@ public class BankLoginGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_passwordActionPerformed
 
     private void usernameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usernameKeyReleased
-//        String PATTERN = "^(a-z)(1,30)";
-//        Pattern patt = Pattern.compile(PATTERN);
-//        Matcher match = patt.matcher(username.getText());
-//        if(!match.matches()){
-//            userLab.setText("Name is invalid");
-//        } else {
-//            userLab.setText(null);
-//        }
+
     }//GEN-LAST:event_usernameKeyReleased
 
     /**

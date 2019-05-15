@@ -20,25 +20,30 @@ import java.util.Scanner;
 
 public class Bank {
 
+    //creates a list of customers
     private List<Customer> Customer = new ArrayList<>();
     private int accNumber;
 
+    //is the constructor for bank
     public Bank(String customerList) {
         loadCustomer(customerList);
     }
 
+    //adds to the customers balance when called
     public void addBal(double addBal, int accNum) {
         Scanner input = new Scanner(System.in);
         double current = this.Customer.get(accNum).getBal();
         Customer.get(accNum).balance = current + addBal;
     }
 
+    //subrtacts from the customers balance when called
     public void subBal(double subBal, int accNum) {
         Scanner input = new Scanner(System.in);
         double current = this.Customer.get(accNum).getBal();
         Customer.get(accNum).balance = current - subBal;
     }
 
+    //adds a customer to the customer list
     public Customer addCustomer(String name, String address, double bal, double credit, String pin) {
         Customer aCustomer = new Customer(accNumber, name, address, bal, credit, pin);
         accNumber++;
@@ -46,17 +51,7 @@ public class Bank {
         return aCustomer;
     }
 
-    public void checkBal(int n, String filename) {
-        try {
-
-            for (Customer m : this.Customer) {
-
-            }
-        } catch (Exception e) {
-            System.err.println("Oopsiewoopsie, sumtin went wong in checkBal: " + e);
-        }
-    }
-
+    //finds a customer
     public Customer findCustomer(String name, String pin) {
         for (Customer c : this.Customer) {
 
@@ -69,16 +64,7 @@ public class Bank {
         return null;
     }
 
-//    public Customer loginCustomer(String name, String pin){
-//          for (Customer c : this.Customer) {
-//            if (c.getName().equals(name) && c.getPin().equals(pin)) {
-//                //found customer
-//                return c;
-//            }
-//        }
-//        //Couldn't log in
-//        return null;
-//    }
+    //loads the list of customers
     public void loadCustomer(String filename) {
         try {
 
@@ -93,10 +79,6 @@ public class Bank {
                 double lim = input.nextDouble();
                 input.nextLine();
                 String pin = input.nextLine();
-//                    //if over credit limit track them down
-//                    if(m.overCredit(m.getBal(), m.getCredit())){
-//                        
-//                    }
                 Customer customer = addCustomer(name, address, bal, lim, pin);
 
             }
@@ -105,6 +87,7 @@ public class Bank {
         }
     }
 
+    //updates the customer list
     public void updateCustomer(String filename, int acNum) {
         try {
             Scanner input = new Scanner(new File(filename));
@@ -117,6 +100,7 @@ public class Bank {
         }
     }
 
+    //saves the custoemrs to the text file
     public void saveCustomers(String filename) {
         try {
             PrintWriter output = new PrintWriter(new File(filename));
@@ -133,37 +117,6 @@ public class Bank {
         } catch (Exception e) {
             System.err.println("Oopsiewoopsie, sumtin went wong in saveCustomers: " + e);
         }
-    }
-
-    public static void changeBal(String replaceWith, String type) throws FileNotFoundException, IOException {
-        try {
-            // input the (modified) file content to the StringBuffer "input"
-            BufferedReader file = new BufferedReader(new FileReader("customer.txt"));
-            StringBuffer inputBuffer = new StringBuffer();
-            String line;
-
-            while ((line = file.readLine()) != null) {
-                line = replaceWith;
-                inputBuffer.append(line);
-                inputBuffer.append('\n');
-            }
-            file.close();
-
-            //write the new string with the replaced line OVER the same file
-            FileOutputStream fileOut = new FileOutputStream("customer.txt");
-            fileOut.write(inputBuffer.toString().getBytes());
-            fileOut.close();
-
-        } catch (Exception e) {
-            System.out.println("Oopsiewoopsie, sumtin went wong");
-        }
-    }
-
-    public void emptyList() throws IOException {
-        PrintWriter writer = new PrintWriter("customer.txt");
-        writer.print("");
-        writer.close();
-
     }
 
 }
