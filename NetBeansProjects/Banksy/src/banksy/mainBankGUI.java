@@ -200,11 +200,11 @@ public class mainBankGUI extends javax.swing.JFrame {
 
     private void withdrawlButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_withdrawlButtonActionPerformed
 
-        Double BALANCE;
-        BALANCE = Double.parseDouble(Withdrawl.getText());
-        if (BALANCE < m.getBal()) {
-            m.subBal(BALANCE, m.getAccNum());
-            balLab1.setText("Current Balance: $" + BALANCE);
+        Double BALANCEW;
+        BALANCEW = Double.parseDouble(Withdrawl.getText());
+        if (BALANCEW < m.getBal()) {
+            m.subBal(BALANCEW, m.getAccNum());
+            balLab1.setText("Current Balance: $" + BALANCEW);
             bank.saveCustomers("customer.txt");
         } else {
             Withdrawl.setText("Insufficient Balance, Please try again.");
@@ -217,10 +217,10 @@ public class mainBankGUI extends javax.swing.JFrame {
 
     private void depositButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depositButton1ActionPerformed
 
-        Double BALANCE;
-        BALANCE = Double.parseDouble(deposit.getText());
-        m.addBal(BALANCE, m.getAccNum());
-        balLab1.setText("Current Balance: $" + BALANCE);
+        Double BALANCED;
+        BALANCED = Double.parseDouble(deposit.getText());
+        m.addBal(BALANCED, m.getAccNum());
+        balLab1.setText("Current Balance: $" + BALANCED);
         bank.saveCustomers("customer.txt");
 
     }//GEN-LAST:event_depositButton1ActionPerformed
