@@ -158,6 +158,7 @@ public class BankLoginGUI extends javax.swing.JFrame {
             mainBankGUI obj = new mainBankGUI(m);
             obj.setVisible(true);
         }
+        this.dispose();
     }//GEN-LAST:event_loginButtonActionPerformed
 
     private void usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameActionPerformed
@@ -170,6 +171,7 @@ public class BankLoginGUI extends javax.swing.JFrame {
         //when the signup button is pressed, takes them to the signUp GUI
         signUpGUI obj = new signUpGUI();
         obj.setVisible(true);
+        this.dispose();
 
     }//GEN-LAST:event_signButtonActionPerformed
 

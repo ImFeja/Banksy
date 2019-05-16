@@ -161,10 +161,12 @@ public class signUpGUI extends javax.swing.JFrame {
             bank.saveCustomers("customer.txt");
             BankLoginGUI obj = new BankLoginGUI();
             obj.setVisible(true);
+            this.dispose();
             } else {
                 System.out.println("Choose a different name or password.");
             }
               
+            
             
         }
 
