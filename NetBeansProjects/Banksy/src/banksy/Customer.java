@@ -42,9 +42,11 @@ public class Customer {
 
     //subrtacts from the customers balance when called
     public void subBal(double subBal, int accNum) {
+      if(subBal > 0){
         Scanner input = new Scanner(System.in);
         double current = this.getBal();
         this.balance = current - subBal;
+      }
     }
 
     //gets the customers name
